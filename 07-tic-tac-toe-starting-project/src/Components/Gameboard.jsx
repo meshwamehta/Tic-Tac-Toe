@@ -1,19 +1,13 @@
-
-{/*This is multidimensional array that represents game's box */}
-const initialGameboard=[
-    [null,null,null],
-    [null,null,null],
-    [null,null,null]
-];
-/*square and player information is fetched from handlesquare function in APP file */
-export default function GameBoard({onSelectSquare,turns}){
+export default function GameBoard({onSelectSquare,board}){
+      /*square and player information is fetched from handlesquare function in APP file 
     let gameBoard=initialGameboard;
-    for(const turn of turns){
-        const {square, player}=turn;
-        const {row,col}=square;
-        gameBoard[row][col]=player;
-        
-    }
+    for(const turn of currentTurn){
+      const {square, player}=turn;
+      const {row,col}=square;
+      gameBoard[row][col]=player;
+    }*/
+   
+    
     //const [gameBoard,setGameboard]=useState(initialGameboard);
 
     // ----------------
@@ -41,9 +35,9 @@ export default function GameBoard({onSelectSquare,turns}){
     }*/
     return(
         <ol id="game-board">
-            {/*here I fetched multi-dimensional array with the help of map
-            row represnts individual arrays */}
-            {gameBoard.map((row, rowIndex)=><li key={rowIndex}>
+            {/*here I fetched multi-dimensional array with the help of map.
+            row represents individual arrays */}
+            {board.map((row, rowIndex)=><li key={rowIndex}>
                 <ol>
                     {row.map((playerMarks,colIndex)=> 
                     <li key={colIndex}>
@@ -59,5 +53,5 @@ export default function GameBoard({onSelectSquare,turns}){
                 </ol>
             </li>)}
         </ol>
-    )
+    );
 }

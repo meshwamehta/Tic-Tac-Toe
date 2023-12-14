@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({playerName,playerSymbol,isActive}){
+export default function Player({playerName,playerSymbol,isActive,onChangeName}){
     {/*Here default editing stage is false it will only become true when
     user click on Edit button */}
     const [isEditing,setEditing]=useState(false);
@@ -9,14 +9,19 @@ export default function Player({playerName,playerSymbol,isActive}){
 
     function editclickHandler(e){
         {/*This is the best practise to change state with boolean opposite */}
-        console.log(e.target.value);
+        
         setEditing((isEditing)=>!isEditing);
+        /*this condition is use to pass player name to onchange prop so that it can store changed name of player in winner sction */
+        if(isEditing){
+            onChangeName(playerSymbol,playerName);
+        }
+        
     }
     {/**this handler will exucute when there is some change happenf in input value
     the event object is a special object that is created and passed to an event handler function when an event occurs
     An event object contains information about the event, such as the type of the event, the target elem*/}
     function changeHandler(event){
-        console.log(event);
+       
         setPlayerName(event.target.value);
     }
     {/*This conditional statement to select what to show 
